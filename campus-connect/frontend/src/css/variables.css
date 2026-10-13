@@ -1,0 +1,80 @@
+:root {
+  /* Color Palette - Navy Blue, Teal, White, and Slate Neutrals */
+  --color-primary: #0f2b48;          /* Deep Campus Navy */
+  --color-primary-light: #173d66;    /* Medium Navy */
+  --color-primary-dark: #0a1c30;     /* Dark Midnight Navy */
+
+  --color-accent: #0d9488;           /* Vibrant University Teal */
+  --color-accent-hover: #0f766e;     /* Deep Teal Hover */
+  --color-accent-light: #ccfbf1;     /* Soft Mint/Teal Tint */
+  --color-accent-glow: rgba(13, 148, 136, 0.25);
+
+  --color-secondary: #3b82f6;        /* Academic Royal Blue */
+  --color-secondary-light: #eff6ff;
+
+  --color-bg-main: #f8fafc;          /* Light Neutral Background */
+  --color-bg-surface: #ffffff;       /* Pure White Card Surface */
+  --color-bg-subtle: #f1f5f9;        /* Light Slate Tint */
+  --color-bg-dark: #0f172a;
+
+  --color-text-main: #0f172a;        /* Deep Charcoal Text */
+  --color-text-muted: #64748b;       /* Slate Grey Secondary */
+  --color-text-subtle: #94a3b8;      /* Light Grey Text */
+  --color-text-inverse: #ffffff;     /* White on Dark */
+
+  --color-border: #e2e8f0;          /* Subtle Border */
+  --color-border-hover: #cbd5e1;     /* Active Border */
+
+  --color-success: #10b981;
+  --color-success-bg: #ecfdf5;
+  --color-warning: #f59e0b;
+  --color-warning-bg: #fffbeb;
+  --color-danger: #ef4444;
+  --color-danger-bg: #fef2f2;
+  --color-info: #0284c7;
+  --color-info-bg: #f0f9ff;
+
+  /* Typography */
+  --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-heading: 'Outfit', 'Inter', -apple-system, sans-serif;
+
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;    /* 18px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.5rem;     /* 24px */
+  --font-size-3xl: 1.875rem;   /* 30px */
+  --font-size-4xl: 2.25rem;    /* 36px */
+  --font-size-5xl: 3rem;       /* 48px */
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Radii & Shadows */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 2px 4px 0 rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.1), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
+  --shadow-glow: 0 0 20px rgba(13, 148, 136, 0.35);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* Layout dimensions */
+  --navbar-height: 70px;
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 76px;
+  --container-max-width: 1280px;
+}
