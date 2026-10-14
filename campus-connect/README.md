@@ -1,4 +1,4 @@
-# Campus Connect 🎓🤝🤖
+https://github.com/jhasuruchi864/campus--career.git# Campus Connect 🎓🤝🤖
 
 > **An AI-Powered University Student Collaboration & Teammate Discovery Platform**
 
