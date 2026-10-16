@@ -47,3 +47,23 @@ The database architecture is designed with 3rd normal form (3NF) relational inte
 8. `join_requests`: Applications submitted by students to join open projects with a personalized pitch.
 9. `events`: College campus hackathons, technical workshops, and networking sessions.
 10. `notifications`: Real-time user notification feed for join status updates and invitations.
+
+---
+
+## ⚡ Supabase Setup Quickstart
+
+To run the database on **Supabase**:
+
+1. **Create/Open your Supabase Project** at [https://supabase.com/dashboard](https://supabase.com/dashboard).
+2. Go to **SQL Editor** in the left sidebar.
+3. Open [`database/supabase_schema.sql`](file:///d:/careercampus/campus-connect/database/supabase_schema.sql) from this project, copy all its contents, paste them into the SQL Editor, and click **Run**.
+4. In Supabase, go to **Project Settings** -> **Database** -> **Connection string** (URI).
+5. Choose **URI** under Connection pooling (Port 6543 or 5432) and copy the connection string.
+6. In `campus-connect/backend/.env`, set:
+   ```env
+   DATABASE_URL="postgresql://postgres.[YOUR-PROJECT-REF]:[YOUR-PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?sslmode=require"
+   ```
+7. Start your backend:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
