@@ -18,6 +18,10 @@ import Projects from './pages/Projects';
 import ProjectDetails from './pages/ProjectDetails';
 import Events from './pages/Events';
 import NotFound from './pages/NotFound';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
+import CookiePolicy from './pages/CookiePolicy';
+import CookieBanner from './components/common/CookieBanner';
 
 export const App = () => {
   return (
@@ -27,6 +31,9 @@ export const App = () => {
           <Routes>
             {/* Public Landing */}
             <Route path="/" element={<Home />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsConditions />} />
+            <Route path="/cookies" element={<CookiePolicy />} />
 
             {/* Authentication Flow */}
             <Route element={<AuthLayout />}>
@@ -47,6 +54,7 @@ export const App = () => {
             {/* Catch-all 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <CookieBanner />
         </AuthProvider>
       </ToastProvider>
     </BrowserRouter>

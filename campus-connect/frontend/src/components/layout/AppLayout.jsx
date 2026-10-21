@@ -28,7 +28,7 @@ export const AppLayout = () => {
 
       <div className="app-main">
         <Navbar onToggleSidebar={toggleSidebar} />
-        <main className="content-wrapper animate-fade-in">
+        <main id="main-content" className="content-wrapper animate-fade-in">
           <Outlet />
         </main>
       </div>

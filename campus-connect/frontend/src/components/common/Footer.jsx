@@ -50,6 +50,15 @@ export const Footer = () => {
               <li style={{ color: '#94a3b8' }}>Scikit-Learn (TF-IDF & Cosine)</li>
             </ul>
           </div>
+
+          <div>
+            <h4 style={{ color: '#ffffff', fontSize: '0.95rem', marginBottom: '1rem' }}>Legal & Privacy</h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.875rem' }}>
+              <li><Link to="/privacy" style={{ color: '#94a3b8' }}>Privacy Policy</Link></li>
+              <li><Link to="/terms" style={{ color: '#94a3b8' }}>Terms & Conditions</Link></li>
+              <li><Link to="/cookies" style={{ color: '#94a3b8' }}>Cookie & Storage Policy</Link></li>
+            </ul>
+          </div>
         </div>
 
         <div style={{
@@ -59,15 +68,20 @@ export const Footer = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: '1rem',
-          fontSize: '0.8rem',
-          color: '#64748b'
+          fontSize: '0.85rem',
+          color: '#94a3b8'
         }}>
           <div>
-            &copy; {new Date().getFullYear()} Campus Connect. Designed for University Innovation & Placement Portfolios.
+            &copy; {new Date().getFullYear()} Campus Connect. All rights reserved.
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span>Built with precision & passion</span>
-            <Heart size={14} color="#ef4444" fill="#ef4444" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+            <Link to="/privacy" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Privacy</Link>
+            <Link to="/terms" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Terms</Link>
+            <Link to="/cookies" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Cookies</Link>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#cbd5e1' }}>
+              <span>Built for students</span>
+              <Heart size={14} color="#ef4444" fill="#ef4444" aria-hidden="true" />
+            </div>
           </div>
         </div>
       </div>

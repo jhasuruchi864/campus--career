@@ -69,6 +69,8 @@ export const TeammateMatchCard = ({ match, onInvite }) => {
         <div style={{ marginBottom: '1rem' }}>
           <button
             onClick={() => setExpanded(!expanded)}
+            aria-expanded={expanded}
+            aria-label={expanded ? 'Hide Score Breakdown' : 'View Explainable Score Breakdown'}
             style={{
               display: 'flex',
               alignItems: 'center',

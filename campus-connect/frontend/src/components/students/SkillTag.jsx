@@ -28,6 +28,7 @@ export const SkillTag = ({ name, level, onRemove }) => {
       {onRemove && (
         <button
           onClick={onRemove}
+          aria-label={`Remove ${name} skill`}
           style={{
             marginLeft: '4px',
             color: 'var(--color-text-subtle)',
@@ -35,7 +36,7 @@ export const SkillTag = ({ name, level, onRemove }) => {
             lineHeight: 1,
             cursor: 'pointer'
           }}
-          title="Remove skill"
+          title={`Remove ${name} skill`}
         >
           &times;
         </button>

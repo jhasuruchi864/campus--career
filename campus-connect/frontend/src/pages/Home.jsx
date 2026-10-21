@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Users, FolderGit2, Calendar, ArrowRight, ShieldCheck, Zap, Award } from 'lucide-react';
+import PublicNavbar from '../components/common/PublicNavbar';
 import Button from '../components/common/Button';
 import Footer from '../components/common/Footer';
 
@@ -8,33 +9,7 @@ export const Home = () => {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#ffffff' }}>
       {/* Top Header */}
-      <nav className="public-navbar">
-        <div className="container public-nav-container">
-          <Link to="/" className="public-logo">
-            <span style={{
-              backgroundColor: 'var(--color-accent)',
-              color: '#ffffff',
-              borderRadius: 'var(--radius-sm)',
-              padding: '4px 8px',
-              fontSize: '1.1rem'
-            }}>
-              CC
-            </span>
-            <span>Campus Connect</span>
-          </Link>
-
-          <ul className="public-links">
-            <li><Link to="/projects">Explore Projects</Link></li>
-            <li><Link to="/find-teammates">AI Teammate Finder</Link></li>
-            <li><Link to="/events">Campus Events</Link></li>
-          </ul>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <Link to="/login" className="btn btn-outline btn-sm">Log In</Link>
-            <Link to="/register" className="btn btn-primary btn-sm">Join Campus</Link>
-          </div>
-        </div>
-      </nav>
+      <PublicNavbar />
 
       {/* Hero Section */}
       <section style={{
@@ -68,7 +43,7 @@ export const Home = () => {
             letterSpacing: '-0.03em',
             marginBottom: '1.25rem'
           }}>
-            Build Winning Teams for <span style={{ color: 'var(--color-accent)' }}>Capstone</span>, <span style={{ color: 'var(--color-secondary)' }}>Hackathons</span> & Research.
+            Build Balanced Teams for <span style={{ color: 'var(--color-accent)' }}>Capstone</span>, <span style={{ color: 'var(--color-secondary)' }}>Hackathons</span> & Research.
           </h1>
 
           <p style={{
@@ -79,44 +54,54 @@ export const Home = () => {
             maxWidth: 680,
             margin: '0 auto 2.5rem'
           }}>
-            Stop struggling with mismatched group projects. Campus Connect matches ambitious college students using intelligent skill-overlap, domain compatibility, and explainable AI scoring.
+            Connect with motivated college students across frontend, backend, ML, and UX disciplines using skill overlap and explainable recommendations.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem', marginBottom: '3.5rem' }}>
             <Link to="/register">
-              <Button variant="primary" size="lg">
+              <Button variant="primary" size="lg" aria-label="Get Started Free and Join Campus">
                 Get Started Free <ArrowRight size={18} />
               </Button>
             </Link>
             <Link to="/find-teammates">
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" aria-label="Try AI Teammate Matching">
                 <Sparkles size={18} color="var(--color-accent)" /> Try AI Teammate Matching
               </Button>
             </Link>
           </div>
 
-          {/* Stats Counters */}
+          {/* Genuine Platform Capabilities Highlights (Replaces unverified fake counters) */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1.5rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '1.25rem',
             padding: '1.5rem',
             backgroundColor: '#ffffff',
             borderRadius: 'var(--radius-lg)',
             border: '1px solid var(--color-border)',
-            boxShadow: 'var(--shadow-md)'
+            boxShadow: 'var(--shadow-md)',
+            textAlign: 'left'
           }}>
-            <div>
-              <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--color-primary)' }}>1,400+</div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Active Student Builders</div>
+            <div style={{ padding: '0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                <Sparkles size={18} color="var(--color-accent)" />
+                <span style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-primary)' }}>Explainable AI</span>
+              </div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>TF-IDF skill similarity and complement scoring.</div>
             </div>
-            <div style={{ borderLeft: '1px solid var(--color-border)', borderRight: '1px solid var(--color-border)' }}>
-              <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--color-accent)' }}>420+</div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Projects Formed</div>
+            <div style={{ padding: '0.5rem', borderLeft: '1px solid var(--color-border)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                <FolderGit2 size={18} color="var(--color-secondary)" />
+                <span style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-primary)' }}>Student Projects</span>
+              </div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Publish capstones and review team pitch requests.</div>
             </div>
-            <div>
-              <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--color-secondary)' }}>94%</div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Team Satisfaction Rate</div>
+            <div style={{ padding: '0.5rem', borderLeft: '1px solid var(--color-border)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                <Calendar size={18} color="#10b981" />
+                <span style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-primary)' }}>Campus Events</span>
+              </div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Explore upcoming collegiate hackathons and seminars.</div>
             </div>
           </div>
         </div>
@@ -205,10 +190,10 @@ export const Home = () => {
             Ready to find your dream team?
           </h2>
           <p style={{ fontSize: '1.1rem', color: '#e2e8f0', marginBottom: '2rem', lineHeight: 1.6 }}>
-            Join hundreds of university developers, designers, and researchers building portfolio-defining software together.
+            Connect with university developers, designers, and researchers to build capstone and hackathon projects together.
           </p>
           <Link to="/register">
-            <Button variant="primary" size="lg" style={{ backgroundColor: '#ffffff', color: 'var(--color-primary)' }}>
+            <Button variant="primary" size="lg" style={{ backgroundColor: '#ffffff', color: 'var(--color-primary)' }} aria-label="Create Student Account and Get Started">
               Create Student Account <ArrowRight size={18} />
             </Button>
           </Link>
