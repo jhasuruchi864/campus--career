@@ -121,6 +121,70 @@ def init_database_seed():
             db.add(event)
             db.commit()
 
+            # Seed Demo Tasks for Kanban
+            from app.models.task import ProjectTask
+            tasks_data = [
+                ProjectTask(project_id=proj.id, title="Setup PyTorch Edge Quantization Pipeline", description="Benchmark ONNX runtime vs TensorRT on Raspberry Pi 5", status="in_progress", priority="high", assigned_to=user.id),
+                ProjectTask(project_id=proj.id, title="Design Medical Triage UI in Figma", description="High-fidelity wireframes for clinician pathology dashboard", status="done", priority="medium", assigned_to=user.id),
+                ProjectTask(project_id=proj.id, title="Build FastAPI Microservice for Inference", description="REST endpoint accepting multipart image files with <50ms response", status="todo", priority="high", assigned_to=user.id),
+                ProjectTask(project_id=proj.id, title="Prepare TreeHacks 3-Minute Pitch Video", description="Record live microscope slide segmentation demo with slide deck", status="review", priority="low", assigned_to=user.id),
+            ]
+            db.add_all(tasks_data)
+            db.commit()
+
+            # Seed Demo Chat Message
+            from app.models.chat import ChatMessage
+            chat_msg = ChatMessage(
+                project_id=proj.id,
+                sender_id=user.id,
+                message="Welcome to MediVision! Let's build the edge inference pipeline for TreeHacks 2026."
+            )
+            db.add(chat_msg)
+            db.commit()
+
+            # Seed Demo Internships
+            from app.models.internship import Internship
+            internships = [
+                Internship(
+                    company_name="OpenAI Labs (Campus Fellow)",
+                    logo_url="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=120&auto=format&fit=crop&q=80",
+                    title="Student Research Fellow - Foundation Models",
+                    role_type="Research RA",
+                    location="Hybrid / San Francisco",
+                    stipend="$52/hr + Housing Stipend",
+                    deadline=datetime.now(timezone.utc) + timedelta(days=30),
+                    description="Work directly with leading research scientists evaluating multimodal alignment, reasoning benchmarks, and efficient attention mechanisms.",
+                    required_skills="Python, PyTorch, Transformers, Mathematics",
+                    apply_url="https://openai.com/careers"
+                ),
+                Internship(
+                    company_name="Vercel",
+                    logo_url="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=120&auto=format&fit=crop&q=80",
+                    title="Frontend Engineering Intern - Next.js Core",
+                    role_type="Internship",
+                    location="Remote (Global)",
+                    stipend="$45/hr",
+                    deadline=datetime.now(timezone.utc) + timedelta(days=45),
+                    description="Contribute to Next.js compiler, Turbopack optimizations, and modern developer tooling used by millions of web developers.",
+                    required_skills="TypeScript, React, Rust, Next.js, Web Performance",
+                    apply_url="https://vercel.com/careers"
+                ),
+                Internship(
+                    company_name="Stanford Autonomous Systems Lab",
+                    logo_url="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=120&auto=format&fit=crop&q=80",
+                    title="Undergraduate Research Assistant - Robotics",
+                    role_type="Research RA",
+                    location="On-Campus",
+                    stipend="$28/hr (Academic Credit Eligible)",
+                    deadline=datetime.now(timezone.utc) + timedelta(days=14),
+                    description="Assist PhD candidates in reinforcement learning simulations for quadcopter trajectory optimization in wind-tunnel environments.",
+                    required_skills="ROS, C++, Python, Control Theory",
+                    apply_url="https://asl.stanford.edu"
+                )
+            ]
+            db.add_all(internships)
+            db.commit()
+
     finally:
         db.close()
 

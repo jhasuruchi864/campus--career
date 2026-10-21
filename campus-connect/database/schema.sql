@@ -132,3 +132,86 @@ CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_projects_status ON projects(status);
 CREATE INDEX IF NOT EXISTS idx_projects_category ON projects(category);
 CREATE INDEX IF NOT EXISTS idx_notifications_user_id ON notifications(user_id);
+
+-- 11. Project Tasks (Kanban)
+CREATE TABLE IF NOT EXISTS project_tasks (
+    id SERIAL PRIMARY KEY,
+    project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    status VARCHAR(50) DEFAULT 'todo' NOT NULL, -- todo, in_progress, review, done
+    priority VARCHAR(50) DEFAULT 'medium' NOT NULL, -- low, medium, high
+    assigned_to INTEGER REFERENCES users(id) ON DELETE SET NULL,
+    due_date TIMESTAMP WITH TIME ZONE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_tasks_project ON project_tasks(project_id);
+
+-- 12. Chat Messages
+CREATE TABLE IF NOT EXISTS chat_messages (
+    id SERIAL PRIMARY KEY,
+    project_id INTEGER REFERENCES projects(id) ON DELETE CASCADE,
+    sender_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    receiver_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_chat_project ON chat_messages(project_id);
+CREATE INDEX IF NOT EXISTS idx_chat_sender ON chat_messages(sender_id);
+CREATE INDEX IF NOT EXISTS idx_chat_receiver ON chat_messages(receiver_id);
+
+-- 13. Internships & Campus Jobs
+CREATE TABLE IF NOT EXISTS internships (
+    id SERIAL PRIMARY KEY,
+    company_name VARCHAR(150) NOT NULL,
+    logo_url VARCHAR(500),
+    title VARCHAR(200) NOT NULL,
+    role_type VARCHAR(50) DEFAULT 'Internship' NOT NULL,
+    location VARCHAR(100) DEFAULT 'Remote' NOT NULL,
+    stipend VARCHAR(100),
+    deadline TIMESTAMP WITH TIME ZONE,
+    description TEXT NOT NULL,
+    required_skills TEXT,
+    apply_url VARCHAR(500),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+-- 14. Internship Applications
+CREATE TABLE IF NOT EXISTS internship_applications (
+    id SERIAL PRIMARY KEY,
+    internship_id INTEGER NOT NULL REFERENCES internships(id) ON DELETE CASCADE,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    status VARCHAR(50) DEFAULT 'Applied' NOT NULL,
+    pitch_note TEXT,
+    applied_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    UNIQUE(internship_id, user_id)
+);
+
+-- 15. Alumni Mentors
+CREATE TABLE IF NOT EXISTS alumni_mentors (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    company VARCHAR(150) NOT NULL,
+    role VARCHAR(150) NOT NULL,
+    university VARCHAR(150) NOT NULL,
+    graduation_year INTEGER NOT NULL,
+    expertise VARCHAR(255) NOT NULL,
+    avatar_url VARCHAR(500),
+    linkedin_url VARCHAR(255),
+    bio TEXT,
+    available_slots INTEGER DEFAULT 3 NOT NULL
+);
+
+-- 16. Mentorship Bookings
+CREATE TABLE IF NOT EXISTS mentorship_bookings (
+    id SERIAL PRIMARY KEY,
+    mentor_id INTEGER NOT NULL REFERENCES alumni_mentors(id) ON DELETE CASCADE,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    topic VARCHAR(200) NOT NULL,
+    scheduled_at TIMESTAMP WITH TIME ZONE NOT NULL,
+    notes TEXT,
+    status VARCHAR(50) DEFAULT 'Confirmed' NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+

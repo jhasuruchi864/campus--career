@@ -17,6 +17,11 @@ import FindTeammates from './pages/FindTeammates';
 import Projects from './pages/Projects';
 import ProjectDetails from './pages/ProjectDetails';
 import Events from './pages/Events';
+import AiHub from './pages/AiHub';
+import Internships from './pages/Internships';
+import Mentors from './pages/Mentors';
+import Chat from './pages/Chat';
+import AdminAnalytics from './pages/AdminAnalytics';
 import NotFound from './pages/NotFound';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
@@ -48,7 +53,12 @@ export const App = () => {
               <Route path="/find-teammates" element={<FindTeammates />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/projects/:id" element={<ProjectDetails />} />
+              <Route path="/ai-hub" element={<AiHub />} />
+              <Route path="/internships" element={<Internships />} />
+              <Route path="/mentors" element={<Mentors />} />
+              <Route path="/chat" element={<Chat />} />
               <Route path="/events" element={<Events />} />
+              <Route path="/analytics" element={<AdminAnalytics />} />
             </Route>
 
             {/* Catch-all 404 */}

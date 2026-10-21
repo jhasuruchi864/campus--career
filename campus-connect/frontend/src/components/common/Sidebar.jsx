@@ -7,7 +7,10 @@ import {
   Calendar,
   UserCircle,
   Sparkles,
-  GraduationCap
+  GraduationCap,
+  Briefcase,
+  MessageSquare,
+  BarChart3
 } from 'lucide-react';
 
 export const Sidebar = ({ isOpen, onClose }) => {
@@ -15,7 +18,12 @@ export const Sidebar = ({ isOpen, onClose }) => {
     { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { to: '/projects', label: 'Explore Projects', icon: FolderGit2 },
     { to: '/find-teammates', label: 'Find Teammates', icon: Users, badge: 'AI' },
+    { to: '/ai-hub', label: 'AI Career Hub', icon: Sparkles, badge: 'New' },
+    { to: '/internships', label: 'Internships & Labs', icon: Briefcase },
+    { to: '/mentors', label: 'Alumni Mentors', icon: GraduationCap },
+    { to: '/chat', label: 'Team Messages', icon: MessageSquare },
     { to: '/events', label: 'Campus Events', icon: Calendar },
+    { to: '/analytics', label: 'Placement Analytics', icon: BarChart3 },
     { to: '/profile', label: 'Student Profile', icon: UserCircle },
   ];
 
@@ -52,16 +60,17 @@ export const Sidebar = ({ isOpen, onClose }) => {
               <span style={{ flex: 1 }}>{item.label}</span>
               {item.badge && (
                 <span style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                  backgroundColor: item.badge === 'AI' ? 'rgba(255, 255, 255, 0.2)' : 'var(--color-accent)',
                   fontSize: '0.65rem',
                   padding: '2px 6px',
                   borderRadius: '10px',
                   fontWeight: 700,
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '2px'
+                  gap: '2px',
+                  color: '#ffffff'
                 }}>
-                  <Sparkles size={10} /> {item.badge}
+                  {item.badge === 'AI' && <Sparkles size={10} />} {item.badge}
                 </span>
               )}
             </NavLink>
@@ -78,10 +87,10 @@ export const Sidebar = ({ isOpen, onClose }) => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
             <Sparkles size={14} color="var(--color-accent-light)" />
-            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#f8fafc' }}>AI Teammate Engine</span>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#f8fafc' }}>AI Campus Intelligence</span>
           </div>
-          <p style={{ fontSize: '0.7rem', color: '#94a3b8', lineHeight: 1.4 }}>
-            TF-IDF & semantic role scoring active for 2026 capstones.
+          <p style={{ fontSize: '0.7rem', color: '#94a3b8', lineHeight: 1.4, margin: 0 }}>
+            ATS scoring, hackathon teams, and placement analytics active.
           </p>
         </div>
       </div>

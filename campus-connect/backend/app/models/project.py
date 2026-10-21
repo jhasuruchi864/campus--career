@@ -25,6 +25,7 @@ class Project(Base):
     required_skills = relationship("ProjectSkill", back_populates="project", cascade="all, delete-orphan")
     team_members = relationship("TeamMember", back_populates="project", cascade="all, delete-orphan")
     join_requests = relationship("JoinRequest", back_populates="project", cascade="all, delete-orphan")
+    tasks = relationship("ProjectTask", back_populates="project", cascade="all, delete-orphan")
 
 
 class ProjectSkill(Base):

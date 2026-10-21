@@ -71,21 +71,53 @@ export const EventCard = ({ event, onRegister }) => {
           {event.description}
         </p>
 
-        <div className="card-footer" style={{ borderTop: '1px solid var(--color-border)', paddingTop: '0.75rem' }}>
-          <span style={{ fontSize: '0.75rem', color: 'var(--color-accent)', fontWeight: 600 }}>
-            Open to all majors
-          </span>
-          {event.registration_url ? (
-            <a href={event.registration_url} target="_blank" rel="noopener noreferrer">
-              <Button variant="primary" size="sm">
-                Register <ExternalLink size={13} />
+        <div className="card-footer" style={{ borderTop: '1px solid var(--color-border)', paddingTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+            <span style={{ fontSize: '0.75rem', color: 'var(--color-accent)', fontWeight: 600 }}>
+              Open to all majors
+            </span>
+            {event.registration_url ? (
+              <a href={event.registration_url} target="_blank" rel="noopener noreferrer">
+                <Button variant="primary" size="sm">
+                  Register <ExternalLink size={13} />
+                </Button>
+              </a>
+            ) : (
+              <Button variant="primary" size="sm" onClick={() => onRegister && onRegister(event)}>
+                RSVP Now
               </Button>
+            )}
+          </div>
+
+          {/* Add to Calendar Utilities */}
+          <div style={{ display: 'flex', gap: '6px', width: '100%' }}>
+            <a
+              href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline btn-xs"
+              style={{ flex: 1, fontSize: '0.7rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}
+            >
+              <Calendar size={12} /> Google Calendar
             </a>
-          ) : (
-            <Button variant="primary" size="sm" onClick={() => onRegister && onRegister(event)}>
-              RSVP Now
-            </Button>
-          )}
+            <button
+              onClick={() => {
+                const icsData = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${event.title}\nDESCRIPTION:${event.description}\nLOCATION:${event.location}\nEND:VEVENT\nEND:VCALENDAR`;
+                const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.setAttribute('download', `${event.title.replace(/[^a-zA-Z0-9]/g, '_')}.ics`);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+              className="btn btn-ghost btn-xs"
+              style={{ fontSize: '0.7rem' }}
+              title="Download Apple / Outlook .ics calendar file"
+            >
+              .ics Export
+            </button>
+          </div>
         </div>
       </div>
     </Card>
