@@ -78,3 +78,74 @@
   --sidebar-collapsed-width: 76px;
   --container-max-width: 1280px;
 }
+
+/* ==========================================================
+   2. Dark Theme (Midnight Obsidian & Electric Teal)
+   ========================================================== */
+[data-theme="dark"] {
+  --color-primary: #f8fafc;
+  --color-primary-light: #e2e8f0;
+  --color-primary-dark: #090d16;
+
+  --color-accent: #14b8a6;
+  --color-accent-hover: #2dd4bf;
+  --color-accent-light: rgba(20, 184, 166, 0.16);
+  --color-accent-glow: rgba(20, 184, 166, 0.35);
+
+  --color-secondary: #38bdf8;
+  --color-secondary-light: rgba(56, 189, 248, 0.15);
+
+  --color-bg-main: #0b0f19;         /* Midnight Canvas */
+  --color-bg-surface: #111827;      /* Elevated Card Surface */
+  --color-bg-subtle: #1e293b;       /* Subtle Inset Sections */
+  --color-bg-dark: #030712;
+
+  --color-text-main: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  --color-text-subtle: #64748b;
+  --color-text-inverse: #0b0f19;
+
+  --color-border: #1f293d;
+  --color-border-hover: #334155;
+
+  --color-success-bg: rgba(16, 185, 129, 0.16);
+  --color-warning-bg: rgba(245, 158, 11, 0.16);
+  --color-danger-bg: rgba(239, 68, 68, 0.16);
+  --color-info-bg: rgba(2, 132, 199, 0.16);
+}
+
+/* ==========================================================
+   3. Cyberpunk Violet Theme (Neon Nebula & Electric Rose)
+   ========================================================== */
+[data-theme="cyberpunk"] {
+  --color-primary: #fdf4ff;
+  --color-primary-light: #f5d0fe;
+  --color-primary-dark: #090514;
+
+  --color-accent: #c084fc;
+  --color-accent-hover: #d8b4fe;
+  --color-accent-light: rgba(192, 132, 252, 0.18);
+  --color-accent-glow: rgba(192, 132, 252, 0.45);
+
+  --color-secondary: #f43f5e;
+  --color-secondary-light: rgba(244, 63, 94, 0.18);
+
+  --color-bg-main: #0c0817;         /* Deep Space Violet */
+  --color-bg-surface: #17102c;      /* Neon Velvet Card */
+  --color-bg-subtle: #241744;
+  --color-bg-dark: #05020a;
+
+  --color-text-main: #f8fafc;
+  --color-text-muted: #d8b4fe;
+  --color-text-subtle: #9333ea;
+  --color-text-inverse: #05020a;
+
+  --color-border: #2d1c52;
+  --color-border-hover: #581c87;
+
+  --color-success-bg: rgba(16, 185, 129, 0.2);
+  --color-warning-bg: rgba(245, 158, 11, 0.2);
+  --color-danger-bg: rgba(239, 68, 68, 0.2);
+  --color-info-bg: rgba(2, 132, 199, 0.2);
+}
+

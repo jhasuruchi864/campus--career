@@ -1,15 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, Bell, Menu, Sparkles, User, LogOut, Check, CheckCheck, ExternalLink } from 'lucide-react';
+import { Search, Bell, Menu, Sparkles, User, LogOut, Check, CheckCheck, ExternalLink, Sun, Moon, Palette } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { getInitials } from '../../js/utils/helpers';
 import api from '../../services/api';
 
 export const Navbar = ({ onToggleSidebar }) => {
   const { user, logout } = useAuth();
+  const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [isNotifOpen, setIsNotifOpen] = useState(false);
+  const [isThemeOpen, setIsThemeOpen] = useState(false);
+  const notifRef = useRef(null);
+  const themeRef = useRef(null);
   const [notifications, setNotifications] = useState([
     {
       id: 1,
@@ -39,7 +44,6 @@ export const Navbar = ({ onToggleSidebar }) => {
       created_at: new Date(Date.now() - 86400000).toISOString()
     }
   ]);
-  const notifRef = useRef(null);
 
   const fetchNotifications = async () => {
     if (!user) return;
@@ -62,6 +66,9 @@ export const Navbar = ({ onToggleSidebar }) => {
     const handleClickOutside = (e) => {
       if (notifRef.current && !notifRef.current.contains(e.target)) {
         setIsNotifOpen(false);
+      }
+      if (themeRef.current && !themeRef.current.contains(e.target)) {
+        setIsThemeOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -131,6 +138,102 @@ export const Navbar = ({ onToggleSidebar }) => {
           <Sparkles size={14} />
           <span>AI Hub</span>
         </Link>
+
+        {/* Theme Switcher Dropdown */}
+        <div ref={themeRef} style={{ position: 'relative' }}>
+          <button
+            className="btn btn-ghost btn-icon"
+            onClick={() => setIsThemeOpen((prev) => !prev)}
+            title={`Current Theme: ${theme.toUpperCase()}`}
+            aria-label="Toggle Theme"
+          >
+            {theme === 'light' && <Sun size={18} color="#f59e0b" />}
+            {theme === 'dark' && <Moon size={18} color="var(--color-accent)" />}
+            {theme === 'cyberpunk' && <Palette size={18} color="var(--color-secondary)" />}
+          </button>
+
+          {isThemeOpen && (
+            <div
+              className="card"
+              style={{
+                position: 'absolute',
+                right: 0,
+                top: '45px',
+                width: '210px',
+                padding: '0.5rem',
+                boxShadow: 'var(--shadow-lg)',
+                zIndex: 110,
+                border: '1px solid var(--color-border)',
+                borderRadius: 'var(--radius-md)',
+                backgroundColor: 'var(--color-bg-surface)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '3px'
+              }}
+            >
+              <div style={{ fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--color-text-subtle)', padding: '4px 8px' }}>
+                Appearance Theme
+              </div>
+              <button
+                onClick={() => { setTheme('light'); setIsThemeOpen(false); }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '7px 10px',
+                  borderRadius: 'var(--radius-sm)',
+                  border: 'none',
+                  backgroundColor: theme === 'light' ? 'var(--color-accent-light)' : 'transparent',
+                  color: theme === 'light' ? 'var(--color-accent)' : 'var(--color-text-main)',
+                  fontWeight: theme === 'light' ? 700 : 500,
+                  cursor: 'pointer',
+                  fontSize: '0.8rem',
+                  textAlign: 'left'
+                }}
+              >
+                <Sun size={15} color="#f59e0b" /> Classic Campus (Light)
+              </button>
+              <button
+                onClick={() => { setTheme('dark'); setIsThemeOpen(false); }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '7px 10px',
+                  borderRadius: 'var(--radius-sm)',
+                  border: 'none',
+                  backgroundColor: theme === 'dark' ? 'var(--color-accent-light)' : 'transparent',
+                  color: theme === 'dark' ? 'var(--color-accent)' : 'var(--color-text-main)',
+                  fontWeight: theme === 'dark' ? 700 : 500,
+                  cursor: 'pointer',
+                  fontSize: '0.8rem',
+                  textAlign: 'left'
+                }}
+              >
+                <Moon size={15} color="#14b8a6" /> Midnight Obsidian (Dark)
+              </button>
+              <button
+                onClick={() => { setTheme('cyberpunk'); setIsThemeOpen(false); }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '7px 10px',
+                  borderRadius: 'var(--radius-sm)',
+                  border: 'none',
+                  backgroundColor: theme === 'cyberpunk' ? 'var(--color-accent-light)' : 'transparent',
+                  color: theme === 'cyberpunk' ? 'var(--color-accent)' : 'var(--color-text-main)',
+                  fontWeight: theme === 'cyberpunk' ? 700 : 500,
+                  cursor: 'pointer',
+                  fontSize: '0.8rem',
+                  textAlign: 'left'
+                }}
+              >
+                <Palette size={15} color="#c084fc" /> Cyberpunk Violet (Neon)
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* Notifications Dropdown */}
         <div ref={notifRef} style={{ position: 'relative' }}>
