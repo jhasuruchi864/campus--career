@@ -1,3 +1,9 @@
+import os
+import sys
+
+# Ensure backend directory is in Python path for test execution
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import pytest
 from datetime import datetime, timezone, timedelta
 from fastapi.testclient import TestClient

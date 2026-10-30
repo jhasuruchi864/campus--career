@@ -5,11 +5,33 @@ from app.core.config import settings
 
 logger = logging.getLogger(__name__)
 
-db_url = settings.DATABASE_URL
+import re
+import urllib.parse
 
-# Normalize postgres:// to postgresql:// (Supabase dashboard copies start with postgres://)
-if db_url.startswith("postgres://"):
-    db_url = db_url.replace("postgres://", "postgresql://", 1)
+def normalize_db_url(url: str) -> str:
+    """Ensures compatible psycopg2 driver scheme and auto-encodes password special characters."""
+    if not url:
+        return url
+    
+    # Normalize postgresql schemes to use installed psycopg2 driver
+    if url.startswith("postgres://"):
+        url = "postgresql+psycopg2://" + url[len("postgres://"):]
+    elif url.startswith("postgresql://"):
+        url = "postgresql+psycopg2://" + url[len("postgresql://"):]
+
+    # Safely handle unencoded special characters in password (such as '@')
+    match = re.match(r"^(postgresql(?:\+psycopg2)?://)([^:]+):(.*)@([^@/]+)(/.*)?$", url)
+    if match:
+        scheme, user, raw_password, host_port, rest = match.groups()
+        if not scheme.startswith("postgresql+psycopg2://"):
+            scheme = "postgresql+psycopg2://"
+        unquoted = urllib.parse.unquote(raw_password)
+        encoded_password = urllib.parse.quote(unquoted, safe="")
+        url = f"{scheme}{user}:{encoded_password}@{host_port}{rest or ''}"
+    
+    return url
+
+db_url = normalize_db_url(settings.DATABASE_URL)
 
 # Helper to mask sensitive credentials in logs
 def _mask_url(url: str) -> str:
