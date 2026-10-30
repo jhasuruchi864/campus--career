@@ -156,7 +156,7 @@ export const Mentors = () => {
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '0.75rem' }}>
             {myBookings.map((b) => (
-              <div key={b.id} style={{ backgroundColor: '#ffffff', padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-border)' }}>
+              <div key={b.id} style={{ backgroundColor: 'var(--color-bg-surface)', padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-border)' }}>
                 <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--color-primary)' }}>{b.mentor_name} ({b.mentor_company})</div>
                 <div style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>{b.topic}</div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--color-accent)', fontWeight: 600, marginTop: '4px' }}>

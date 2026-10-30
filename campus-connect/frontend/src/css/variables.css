@@ -84,8 +84,8 @@
    ========================================================== */
 [data-theme="dark"] {
   --color-primary: #f8fafc;
-  --color-primary-light: #e2e8f0;
-  --color-primary-dark: #090d16;
+  --color-primary-light: #ffffff;
+  --color-primary-dark: #e2e8f0;
 
   --color-accent: #14b8a6;
   --color-accent-hover: #2dd4bf;
@@ -119,8 +119,8 @@
    ========================================================== */
 [data-theme="cyberpunk"] {
   --color-primary: #fdf4ff;
-  --color-primary-light: #f5d0fe;
-  --color-primary-dark: #090514;
+  --color-primary-light: #ffffff;
+  --color-primary-dark: #f5d0fe;
 
   --color-accent: #c084fc;
   --color-accent-hover: #d8b4fe;

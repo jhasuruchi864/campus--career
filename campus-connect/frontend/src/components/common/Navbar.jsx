@@ -5,6 +5,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { getInitials } from '../../js/utils/helpers';
 import api from '../../services/api';
+import InstagramSettingsMenu from './InstagramSettingsMenu';
 
 export const Navbar = ({ onToggleSidebar }) => {
   const { user, logout } = useAuth();
@@ -328,36 +329,8 @@ export const Navbar = ({ onToggleSidebar }) => {
           )}
         </div>
 
-        {user ? (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <Link to="/profile" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              {user.avatar_url ? (
-                <img src={user.avatar_url} alt={user.full_name} className="avatar" style={{ width: 34, height: 34 }} />
-              ) : (
-                <div className="avatar" style={{ width: 34, height: 34, fontSize: '0.75rem' }}>
-                  {getInitials(user.full_name)}
-                </div>
-              )}
-              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-primary)' }}>
-                {user.full_name}
-              </span>
-            </Link>
-
-            <button
-              onClick={logout}
-              className="btn btn-ghost btn-icon"
-              title="Sign Out"
-              aria-label="Sign Out"
-            >
-              <LogOut size={16} />
-            </button>
-          </div>
-        ) : (
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <Link to="/login" className="btn btn-outline btn-sm">Log in</Link>
-            <Link to="/register" className="btn btn-primary btn-sm">Join Campus</Link>
-          </div>
-        )}
+        {/* Instagram-Style Settings & Profile Widget */}
+        <InstagramSettingsMenu />
       </div>
     </header>
   );

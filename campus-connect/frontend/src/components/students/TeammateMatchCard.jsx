@@ -56,7 +56,7 @@ export const TeammateMatchCard = ({ match, onInvite }) => {
         </div>
         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '4px' }}>
           {match_reasons.slice(0, 3).map((reason, idx) => (
-            <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: 'var(--color-primary-dark)' }}>
+            <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: 'var(--color-text-main)' }}>
               <CheckCircle2 size={13} color="var(--color-accent)" />
               <span>{reason}</span>
             </li>
@@ -121,7 +121,7 @@ export const TeammateMatchCard = ({ match, onInvite }) => {
               fontSize: '0.75rem',
               padding: '2px 8px',
               borderRadius: 'var(--radius-full)',
-              backgroundColor: '#ffffff',
+              backgroundColor: 'var(--color-bg-subtle)',
               border: '1px solid var(--color-border)',
               color: 'var(--color-text-main)',
               fontWeight: 500

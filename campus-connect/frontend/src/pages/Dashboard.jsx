@@ -113,7 +113,7 @@ export const Dashboard = () => {
           {user?.avatar_url ? (
             <img src={user.avatar_url} alt={user.full_name} className="avatar avatar-lg" style={{ border: '3px solid #ffffff' }} />
           ) : (
-            <div className="avatar avatar-lg" style={{ border: '3px solid #ffffff', backgroundColor: '#ffffff', color: 'var(--color-primary)' }}>
+            <div className="avatar avatar-lg" style={{ border: '3px solid rgba(255,255,255,0.8)', backgroundColor: '#ffffff', color: '#0f2b48' }}>
               {getInitials(user?.full_name)}
             </div>
           )}
@@ -131,7 +131,7 @@ export const Dashboard = () => {
         </div>
 
         <div style={{ display: 'flex', gap: '0.75rem' }}>
-          <Button variant="primary" style={{ backgroundColor: '#ffffff', color: 'var(--color-primary)' }} onClick={() => setIsCreateOpen(true)}>
+          <Button variant="primary" style={{ backgroundColor: '#ffffff', color: '#0f2b48', fontWeight: 700 }} onClick={() => setIsCreateOpen(true)}>
             <Plus size={16} /> New Project
           </Button>
           <Link to="/find-teammates">

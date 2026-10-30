@@ -172,7 +172,7 @@ Our project builds a quantized neural network capable of executing on local edge
 
       {/* Hero Card */}
       <div style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: 'var(--color-bg-surface)',
         borderRadius: 'var(--radius-lg)',
         padding: '2rem',
         border: '1px solid var(--color-border)',
@@ -390,7 +390,7 @@ Our project builds a quantized neural network capable of executing on local edge
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                     {columnTasks.map((t) => (
-                      <div key={t.id} className="card" style={{ padding: '1rem', backgroundColor: '#ffffff', boxShadow: 'var(--shadow-xs)' }}>
+                      <div key={t.id} className="card" style={{ padding: '1rem', backgroundColor: 'var(--color-bg-surface)', boxShadow: 'var(--shadow-xs)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
                           <span style={{
                             fontSize: '0.7rem',

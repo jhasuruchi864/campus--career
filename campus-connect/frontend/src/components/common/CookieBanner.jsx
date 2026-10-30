@@ -29,7 +29,7 @@ export const CookieBanner = () => {
         left: '1rem',
         right: '1rem',
         maxWidth: '540px',
-        backgroundColor: '#ffffff',
+        backgroundColor: 'var(--color-bg-surface)',
         borderRadius: 'var(--radius-md)',
         boxShadow: 'var(--shadow-lg)',
         border: '1px solid var(--color-border)',

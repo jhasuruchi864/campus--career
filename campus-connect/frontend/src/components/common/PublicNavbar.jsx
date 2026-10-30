@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import InstagramSettingsMenu from './InstagramSettingsMenu';
+import { useAuth } from '../../context/AuthContext';
 
 export const PublicNavbar = () => {
+  const { user } = useAuth();
+
   return (
     <nav className="public-navbar" aria-label="Main Navigation">
       <div className="container public-nav-container">
@@ -29,8 +33,23 @@ export const PublicNavbar = () => {
         </ul>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <Link to="/login" className="btn btn-outline btn-sm" aria-label="Log In">Log In</Link>
-          <Link to="/register" className="btn btn-primary btn-sm" aria-label="Join Campus as Student">Join Campus</Link>
+          {/* Instagram-Style Settings Trigger & Account Menu */}
+          <InstagramSettingsMenu />
+
+          {!user ? (
+            <>
+              <Link to="/login" className="btn btn-outline btn-sm" aria-label="Log In">
+                Log In
+              </Link>
+              <Link to="/register" className="btn btn-primary btn-sm" aria-label="Join Campus as Student">
+                Join Campus
+              </Link>
+            </>
+          ) : (
+            <Link to="/dashboard" className="btn btn-primary btn-sm">
+              Dashboard
+            </Link>
+          )}
         </div>
       </div>
     </nav>

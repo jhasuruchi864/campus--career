@@ -17,7 +17,7 @@ export const ProjectFilter = ({
       gap: '1rem',
       alignItems: 'center',
       marginBottom: '1.75rem',
-      backgroundColor: '#ffffff',
+      backgroundColor: 'var(--color-bg-surface)',
       padding: '1rem 1.25rem',
       borderRadius: 'var(--radius-md)',
       border: '1px solid var(--color-border)',

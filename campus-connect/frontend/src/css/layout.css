@@ -157,7 +157,7 @@
 /* Public Header (Home / Marketing) */
 .public-navbar {
   height: var(--navbar-height);
-  background-color: #ffffff;
+  background-color: var(--color-bg-surface);
   border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
@@ -211,8 +211,9 @@
 }
 
 .auth-card {
-  background-color: #ffffff;
+  background-color: var(--color-bg-surface);
   border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 480px;

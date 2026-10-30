@@ -21,7 +21,7 @@ export const SkillGapAdvisor = ({ gaps = [], recommendations = [] }) => {
 
       {gaps.length > 0 && (
         <div style={{ marginBottom: '1rem' }}>
-          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#b45309', textTransform: 'uppercase' }}>
+          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-warning)', textTransform: 'uppercase' }}>
             Unfilled Competencies:
           </span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '6px' }}>

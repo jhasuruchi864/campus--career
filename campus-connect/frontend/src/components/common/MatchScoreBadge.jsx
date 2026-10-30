@@ -14,7 +14,7 @@ export const MatchScoreBadge = ({ score = 85, showLabel = true, size = 'md' }) =
         padding: size === 'sm' ? '0.2rem 0.5rem' : '0.35rem 0.75rem'
       }}
     >
-      <Sparkles size={size === 'sm' ? 12 : 14} style={{ color: meta.color }} />
+      <Sparkles size={size === 'sm' ? 12 : 14} style={{ color: 'currentColor' }} />
       <span>{Math.round(score)}%</span>
       {showLabel && (
         <span style={{ opacity: 0.85, fontWeight: 500, marginLeft: 2 }}>
